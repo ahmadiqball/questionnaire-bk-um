@@ -11,6 +11,7 @@ import { PageGuide } from '../pages/page-guide';
 import { PageStartAssessment } from '../pages/page-start-assessment';
 import { PageAssessment } from '../pages/page-assessment';
 import { PageAssessmentResult } from '../pages/page-assessment-result';
+import { PageTeam } from '../pages/page-team';
 
 const routes: RouteObject[] = [
   {
@@ -52,6 +53,10 @@ const routes: RouteObject[] = [
       {
         Component: PageGuide,
         path: '/guide'
+      },
+      {
+        Component: PageTeam,
+        path: '/team'
       },
       {
         Component: PageStartAssessment,

@@ -1,11 +1,13 @@
 import classNames from "classnames"
 
-export function Button({children, light, className, ...props}: any) {
+export function Button({children, light, warning, className, ...props}: any) {
   return(
     <button 
-      className={classNames(className, 'w-[238px] sm:w-[238px] h-[52px] rounded-lg flex justify-center items-center border border-purple', {
-      'bg-purple text-white': !light,
-      'bg-white text-purple': light,
+      className={classNames(className, 'sm:w-[238px] h-[52px] rounded-lg flex justify-center items-center border border-primary', {
+      'bg-primary text-white': !light && !warning,
+      'bg-white text-primary': light && !warning,
+      'bg-red text-white': warning,
+      'w-[238px]': !className.includes('w-')
       })}
       {...props}
     >

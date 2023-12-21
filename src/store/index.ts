@@ -6,6 +6,8 @@ interface UserData {
   age: number;
   gender: string;
   school: string;
+  jurusan: string;
+  class: string;
 }
 
 interface Store {

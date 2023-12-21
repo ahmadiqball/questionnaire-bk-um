@@ -51,14 +51,14 @@ export function PageAddSession() {
   }
 
   return(
-    <main className="w-full min-h-screen bg-[url(/assets/background-dark.svg)]  bg-center bg-cover bg-no-repeat">
-      <div className="w-full flex justify-between items-center bg-purple py-5 px-10 md:px-20">
+    <main className="w-full min-h-screen bg-[url(/assets/background-cloud.svg)]  bg-center bg-cover bg-no-repeat">
+      <div className="w-full flex justify-between items-center bg-primary py-5 px-10 md:px-20">
         <h1 className="text-white text-2xl sm:text-4xl font-bold">Add Session</h1>
         <Button light onClick={() => navigate('/counselor/session')} className="w-36">Load Session</Button>
       </div>
     
-      <div className="py-10 min-h-[calc(100vh-92px)] flex justify-center items-center">
-        <div className="rounded-lg border border-purple bg-[#F6F5FD] w-[90%] sm:w-auto py-6 px-8">
+      <div className="py-10 min-h-[calc(100vh-92px)] flex justify-center items-center backdrop-blur-[26px] bg-[#F6F5FDB2]">
+        <div className="rounded-lg border border-primary bg-white w-[90%] sm:w-[459px] py-6 px-8">
           <h2 className="text-black text-4xl font-bold">Buat Asesmen</h2>
           <p className="text-[#404040] text-base mt-6 mb-10">Lengkapi data berikut untuk membuat asesmen</p>
 

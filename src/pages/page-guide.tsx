@@ -6,13 +6,13 @@ export function PageGuide() {
   const navigate = useNavigate();
 
   return(
-    <main className="w-full h-screen bg-[url(/assets/background-white.svg)] bg-center bg-cover bg-no-repeat">
-      <div className="w-full flex justify-between items-center bg-purple py-5 px-10 sm:px-20">
+    <main className="w-full min-h-screen bg-[url(/assets/background-cloud.svg)] bg-center bg-cover bg-no-repeat">
+      <div className="w-full flex justify-between items-center bg-primary py-5 px-10 sm:px-20">
         <h1 className="text-white text-2xl sm:text-4xl font-bold">Panduan Mengisi Form</h1>
       </div>
 
-      <div className="px-10 sm:px-20 pb-20">
-        <h3 className="text-black text-2xl sm:text-4xl font-bold mt-10 text-center xl:text-left">Pilih berdasarkan kondisi Anda saat ini dengan panduan sebagai berikut</h3>
+      <div className="px-10 sm:px-20 pb-20 backdrop-blur-[26px] bg-[#F6F5FDB2]">
+        <h3 className="text-black text-2xl sm:text-4xl font-bold pt-10 text-center xl:text-left">Pilih berdasarkan kondisi Anda saat ini dengan panduan sebagai berikut</h3>
 
         <div className="grid grid-cols-2 sm:flex gap-10 lg:gap-20 mt-10 justify-center xl:justify-start">
           {optionList.map((item) => (
@@ -24,7 +24,7 @@ export function PageGuide() {
         </div>
 
         <div className="mt-20 flex gap-4 flex-col xl:flex-row">
-          <div className="p-4 bg-purple-light rounded-lg text-center">
+          <div className="p-4 bg-primary-light rounded-lg text-center">
             <p className="text-xl sm:text-2xl">Berikut contoh tampilan form yang akan Anda isi.</p>
 
             <div className="bg-white px-4 sm:px-8 py-4 rounded-[4px] mt-[25px] flex flex-col items-center">
@@ -40,7 +40,7 @@ export function PageGuide() {
             </div>
           </div>
 
-          <div className="p-4 bg-purple-light rounded-lg text-center">
+          <div className="p-4 bg-primary-light rounded-lg text-center">
             <p className="text-xl sm:text-2xl">Berikut contoh tampilan form yang telah Anda isi.</p>
 
             <div className="bg-white  px-4 sm:px-8 py-4 rounded-[4px] mt-[25px] flex flex-col items-center">
@@ -48,10 +48,7 @@ export function PageGuide() {
               <div className="grid grid-cols-2 sm:flex gap-5 mt-10">
                 {optionList.map((item) => (
                   <div key={item.label} className="flex flex-col items-center max-w-[106px] text-center relative z-10">
-                    {item.label === 'Sangat Setuju' ? (
-                      <div className="h-16 w-16 bg-[#FBEA93] rounded-[50%] absolute -z-10"/>
-                    ) : null}
-                    <img src={item.img} alt={item.label} className="h-16 w-16"/>
+                    <img src={item.label !== 'Setuju' ? item.img : item.imgSelect} alt={item.label} className="h-16 w-16"/>
                     <p className="mt-2 text-sm">{item.label}</p>
                   </div>
                 ))}

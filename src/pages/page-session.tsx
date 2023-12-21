@@ -62,21 +62,21 @@ export function PageSession() {
   }, [sessionData])
 
   return(
-    <main className="w-full h-screen bg-[url(/assets/background-dark.svg)]  bg-center bg-cover bg-no-repeat">
-      <div className="w-full flex justify-between items-center bg-purple py-5 px-10 md:px-20">
+    <main className="w-full h-screen bg-[url(/assets/background-cloud.svg)]  bg-center bg-cover bg-no-repeat">
+      <div className="w-full flex justify-between items-center bg-primary py-5 px-10 md:px-20">
         <h1 className="text-white text-3xl font-bold">{`${minute}:${second}`}</h1>
         <Button light onClick={() => navigate('/counselor/session')} className="w-36">Load Session</Button>
       </div>
     
-      <div className="h-[calc(100vh-92px)] flex justify-center items-center">
-        <div className="rounded-lg border border-purple bg-[#F6F5FD] py-6 px-8 w-[90%] sm:w-fit">
+      <div className="h-[calc(100vh-92px)] flex justify-center items-center bg-[#F6F5FDB2] backdrop-blur-lg">
+        <div className="rounded-lg border bg-[#F6F5FD] py-6 px-8 w-[90%] sm:w-fit">
           <h2 className="text-black text-4xl font-bold">Token</h2>
 
           <div className="mt-4 flex gap-4 items-center">
-            <h6 className="text-5xl font-bold text-purple w-[375px]">{sessionData?.sessionId}</h6>
-            <div className="hover:cursor-pointer relative">
+            <h6 className="text-5xl font-bold text-primary w-[375px]">{sessionData?.sessionId}</h6>
+            <div className="hover:cursor-pointer relative min-w-[35px]">
               <img src="/assets/link.svg" className="h-10 hover:cursor-pointer" onClick={copyToClipboard}/>
-              { copied ? <p className="text-[10px] text-purple font-bold mt-1 absolute">Copied!</p> : null }
+              { copied ? <p className="text-[10px] text-primary font-bold mt-1 absolute">Copied!</p> : null }
             </div>
           </div>
 
