@@ -6,7 +6,7 @@ const fileExtension = '.xlsx';
 
 const header = ['nama', 'sekolah', 'jurusan', 'kelas', 'gender', 'umur', 'tanggal_tes']
 const questionHeader: string[] = []
-for (let i=1;i<=46;i++) {
+for (let i=1;i<=40;i++) {
   questionHeader.push(i.toString())
 }
 
@@ -28,7 +28,7 @@ export async function downloadExcelFile(filename: string, input: any[]) {
     jurusan: input[0].jurusan,
     kelas: input[0].kelas,
     tanggal_tes: input[0].tanggal_tes,
-    rata_rata: meanAcc/46,
+    rata_rata: meanAcc/40,
     ...accumulator
   }
 

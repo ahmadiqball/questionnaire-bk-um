@@ -1,8 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { Button } from "../components/button";
 
 export function PageLanding() {
   const navigate = useNavigate();
+  const { playMusic } = useOutletContext<any>();
+  const startHandler = () => {
+    playMusic();
+    navigate('/guide');
+  }
 
   return(
     <main className="w-full min-h-screen bg-[url(/assets/background-cloud.svg)] bg-center bg-cover bg-no-repeat">
@@ -16,7 +21,7 @@ export function PageLanding() {
           </div>
 
           <div className="flex gap-5 flex-col sm:flex-row w-full">
-            <Button onClick={() => navigate('/guide')} className="w-full">Start</Button>
+            <Button onClick={startHandler} className="w-full">Start</Button>
             <Button light onClick={() => navigate('/team')} className="w-full">Tentang Kami</Button>
           </div>
 
