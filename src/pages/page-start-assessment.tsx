@@ -41,7 +41,6 @@ export function PageStartAssessment() {
   } = useForm<Inputs>({
     mode: 'onChange', resolver: zodResolver(validationSchema)
   });
-  console.log("🚀 ~ file: page-start-assessment.tsx:41 ~ PageStartAssessment ~ errors:", errors)
 
   const selectRef = useRef<HTMLInputElement>(null)
   
