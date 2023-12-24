@@ -11,7 +11,7 @@ export function PageGuide() {
         <h1 className="text-white text-2xl sm:text-4xl font-bold">Panduan Mengisi Form</h1>
       </div>
 
-      <div className="px-10 sm:px-20 pb-20 backdrop-blur-[26px] bg-[#F6F5FDB2]">
+      <div className="min-h-[calc(100vh-80px)] px-10 sm:px-20 pb-20 backdrop-blur-[26px] bg-[#F6F5FDB2]">
         <h3 className="text-black text-2xl sm:text-4xl font-bold pt-10 text-center xl:text-left">Pilih berdasarkan kondisi Anda saat ini dengan panduan sebagai berikut</h3>
 
         <div className="grid grid-cols-2 sm:flex gap-10 lg:gap-20 mt-10 justify-center xl:justify-start">

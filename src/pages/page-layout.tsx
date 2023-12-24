@@ -12,8 +12,7 @@ export function PageLayout() {
   const ref = useRef<HTMLAudioElement>(null);
 
   function playMusic() {
-    ref.current!.pause()
-    ref.current!.play()
+    ref.current!.play();
   }
 
   useEffect(() => {
@@ -31,9 +30,7 @@ export function PageLayout() {
 
   return (
     <>
-      <audio loop id="bg-music" ref={ref}>
-        <source src="/assets/keshi-blue.mp3" type="media/mpeg" />
-      </audio>
+      <audio loop id="bg-music" ref={ref} controls src="/assets/memories-maroon5.mp3" className="w-0 h-0 hidden"/>
       <Outlet context={{playMusic}}/>
     </>
   )

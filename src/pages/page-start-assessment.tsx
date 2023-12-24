@@ -23,7 +23,7 @@ const validationSchema = z.object({
   name: z.string().trim().min(1),
   age: z.string().transform(val => parseInt(val)).refine(val => val > 0),
   gender: z.string(),
-  jurusan: z.string(),
+  jurusan: z.string().trim().min(1),
   school: z.string().trim().min(1),
   token: z.string().length(6)
 })
@@ -32,16 +32,18 @@ export function PageStartAssessment() {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get('id');
   const { playMusic } = useOutletContext<any>();
-  const [error, setError] = useState(false);
+  const [error, setErrors] = useState(false);
   const { setUserData } = useStore();
   const navigate = useNavigate();
   const { 
     register, 
     handleSubmit, 
-    formState: { errors, dirtyFields }
+    formState: { errors, dirtyFields },
+    setError
   } = useForm<Inputs>({
     mode: 'onChange', resolver: zodResolver(validationSchema)
   });
+  console.log("🚀 ~ file: page-start-assessment.tsx:42 ~ PageStartAssessment ~ errors:", errors)
 
   const selectRef = useRef<HTMLInputElement>(null)
   
@@ -50,8 +52,12 @@ export function PageStartAssessment() {
       const dbData = await getDoc(doc(firestore, 'session', 'active-list'))
       const active = dbData.data()?.sessionId
 
+      if (!selectRef.current?.value) {
+        setError('class', { message: 'Class can\'t be empty'});
+      }
+
       if (!active.includes(data.token)) {
-        setError(true);
+        setErrors(true);
         return;
       }
 
@@ -114,13 +120,13 @@ export function PageStartAssessment() {
                 className="w-full" 
                 light 
                 onClick={() => {
-                  setError(false);
+                  setErrors(false);
                   navigate('/');
                 }}
               >
                 Kembali ke Home
               </Button>
-              <Button className="w-full"  onClick={() => setError(false)}>Masukkan Token</Button>
+              <Button className="w-full"  onClick={() => setErrors(false)}>Masukkan Token</Button>
             </div>
           </div>
         </div>
