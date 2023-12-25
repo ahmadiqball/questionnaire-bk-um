@@ -7,7 +7,7 @@ export function Button({children, light, warning, className, ...props}: any) {
       'bg-primary text-white': !light && !warning,
       'bg-white text-primary': light && !warning,
       'bg-red text-white': warning,
-      'w-[238px]': !className.includes('w-')
+      'w-[238px]': !className?.includes('w-')
       })}
       {...props}
     >

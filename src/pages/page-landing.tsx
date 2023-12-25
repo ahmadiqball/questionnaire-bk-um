@@ -1,8 +1,12 @@
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { Button } from "../components/button";
+import { useRef } from "react";
+import { ResultPDF } from "../components/result-pdf";
 
 export function PageLanding() {
   const navigate = useNavigate();
+  const ref = useRef(null);
+
   const { playMusic } = useOutletContext<any>();
   const startHandler = () => {
     playMusic();

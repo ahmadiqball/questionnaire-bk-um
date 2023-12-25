@@ -5,6 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'jakarta-sans': 'Plus Jakarta Sans',
+      'garamond': 'EB Garamond',
+    },
     extend: {
       colors: {
         'primary': '#426FFF',

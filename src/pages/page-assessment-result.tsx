@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { Button } from "../components/button"
 import { useStore } from "../store";
+import { ResultPDF } from "../components/result-pdf";
+import { usePDF } from "react-to-pdf";
 
 const resultList = [
   'Cara individu menilai dirinya sendiri ke arah negatif',
@@ -11,16 +13,25 @@ const resultList = [
 
 export function PageAssessmentResult() {
   const navigate = useNavigate();
-  const { storeAnswers } = useStore();
+  const { storeAnswers, userData } = useStore();
+  const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
   const arrayAnswer = Object.values(storeAnswers)
   const total = arrayAnswer.reduce((res, cur) => res + (cur.value || 0), 0)
   
   const result = total <= 79 
-  ? (<span className="text-red">kurang</span>)
+  ? 'Kurang'
   : total <= 119 
-  ? (<span className="text-[#CD7B2E]">cukup</span>)
-  : null;
+  ? 'Cukup'
+  : 'Tinggi';
 
+  const pdfData = {
+    name: userData?.name,
+    school: userData?.school,
+    gender: userData?.gender,
+    age: userData?.age,
+    score: Math.ceil(100*total/140),
+    result: result
+  }
 
   return(
     <main className="w-full min-h-screen bg-[url(/assets/background-white.svg)] bg-center bg-cover bg-no-repeat">
@@ -28,19 +39,18 @@ export function PageAssessmentResult() {
         <h1 className="text-white text-2xl sm:text-4xl font-bold">Hasil Asesmen</h1>
       </div>
 
-      <div className="px-10 lg:px-[100px] py-14">
-        <h1 className="font-bold text-3xl sm:text-5xl lg:text-6xl">Individu {result} memiliki kecenderungan terhadap :</h1>
-
-        <div className="bg-white rounded-2xl p-4 mt-10 shadow-[0px_4px_8px_0px_rgba(0,0,0,.25)]"> 
-          {resultList.map((item, index) => (
-            <div className="flex gap-2 sm:gap-6 my-6 items-center" key={index}>
-              <div className="text-white text-lg sm:text-[40px] font-bold bg-primary-light h-10 w-10 sm:h-20 sm:w-20 rounded-[50%] flex items-center justify-center ">{index+1}</div>
-              <p className="text-[#0A0A0A] w-[calc(100%-40px)] sm:w-[calc(100%-104px)] text-base sm:text-2xl lg:text-4xl font-bold px-4 py-2 sm:py-5 bg-[#F6F5FD] border border-primary rounded-md shrink">{item}</p>
-            </div>
-          ))}
+      <div className="px-10 lg:px-[100px] py-14 flex flex-col justify-center items-center">
+        <div className="flex flex-col items-center overflow-hidden max-w-full w-full sm:overflow-visible relative pt-[500px] sm:pt-[1000px] lg:pt-0">
+          <div className="shadow-xl scale-[0.4] sm:scale-75 lg:scale-100 absolute -top-[350px] sm:-top-[150px] lg:relative lg:top-0">
+            <ResultPDF data={pdfData}/>
+          </div>
+          <Button light className="mt-20" onClick={toPDF}>Download PDF</Button>
         </div>
 
         <Button className="mt-20 ml-auto" onClick={() => navigate('/')}>Kembali ke Home</Button>
+      </div>
+      <div className="absolute bottom-full"> 
+        <ResultPDF ref={targetRef} data={pdfData}/>
       </div>
     </main>
   )

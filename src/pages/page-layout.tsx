@@ -29,9 +29,9 @@ export function PageLayout() {
   }
 
   return (
-    <>
+    <div className="font-jakarta-sans">
       <audio loop id="bg-music" ref={ref} controls src="/assets/memories-maroon5.mp3" className="w-0 h-0 hidden"/>
       <Outlet context={{playMusic}}/>
-    </>
+    </div>
   )
 }
