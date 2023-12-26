@@ -56,10 +56,10 @@ export function PageAssessment() {
 
   return (
     <main className="w-full min-h-screen bg-[url(/assets/background-cloud.svg)] bg-center bg-contain">
-      <div className="min-h-screen backdrop-blur-[26px] bg-[#F6F5FDB2] pt-32 px-10 sm:px-20 pb-10 sm:pb-[98px]">
+      <div className="min-h-screen backdrop-blur-[26px] bg-[#F6F5FDB2] pt-32 px-3 sm:px-20 pb-10 sm:pb-[98px]">
         {Object.values(answer).map((item) => (
           <div className="py-20 w-full flex flex-col gap-10 sm:gap-[96px] justify-center items-center">
-            <p className="text-[#0A0A0A] font-bold text-3xl sm:text-5xl lg:text-[64px] text-center max-w-[1270px]">{item.question}</p>
+            <p className="text-[#0A0A0A] font-bold text-2xl sm:text-4xl text-center max-w-[1000px]">{item.question}</p>
 
             <OptionSelector active={item.value} setActive={updateQuestionValue} id={item.id}/>
           </div>

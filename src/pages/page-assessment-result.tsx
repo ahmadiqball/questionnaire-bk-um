@@ -14,7 +14,7 @@ const resultList = [
 export function PageAssessmentResult() {
   const navigate = useNavigate();
   const { storeAnswers, userData } = useStore();
-  const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
+  const { toPDF, targetRef } = usePDF({filename: `Hasil Asesmen - ${userData?.name}.pdf`});
   const arrayAnswer = Object.values(storeAnswers)
   const total = arrayAnswer.reduce((res, cur) => res + (cur.value || 0), 0)
   
@@ -29,7 +29,7 @@ export function PageAssessmentResult() {
     school: userData?.school,
     gender: userData?.gender,
     age: userData?.age,
-    score: Math.ceil(100*total/140),
+    score: Math.ceil(100*total/160),
     result: result
   }
 
@@ -39,9 +39,9 @@ export function PageAssessmentResult() {
         <h1 className="text-white text-2xl sm:text-4xl font-bold">Hasil Asesmen</h1>
       </div>
 
-      <div className="px-10 lg:px-[100px] py-14 flex flex-col justify-center items-center">
+      <div className="px-0  lg:px-[100px] py-14 flex flex-col justify-center items-center">
         <div className="flex flex-col items-center overflow-hidden max-w-full w-full sm:overflow-visible relative pt-[500px] sm:pt-[1000px] lg:pt-0">
-          <div className="shadow-xl scale-[0.4] sm:scale-75 lg:scale-100 absolute -top-[350px] sm:-top-[150px] lg:relative lg:top-0">
+          <div className="shadow-xl scale-[0.35] sm:scale-75 lg:scale-100 absolute -top-[350px] sm:-top-[150px] lg:relative lg:top-0">
             <ResultPDF data={pdfData}/>
           </div>
           <Button light className="mt-20" onClick={toPDF}>Download PDF</Button>

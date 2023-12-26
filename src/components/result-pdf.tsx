@@ -34,7 +34,7 @@ export const ResultPDF = forwardRef<HTMLDivElement, any>(({data}, ref) => {
         <img src="/assets/android-chrome-192x192.png" className="absolute w-32 h-32 -top-2 -left-14"/>
       </div>
       
-      <h1 className="text-center font-bold pt-7">LAPORAN HASIL <br /> SEKSUALITAS SEHAT GENERASI Z</h1>
+      <h1 className="text-center font-bold pt-7">LAPORAN HASIL <br />PEMAHAMAN SEKSUALITAS SEHAT GENERASI Z</h1>
 
       <div className="grid grid-cols-2 pt-4">
         <div className="flex">
@@ -104,7 +104,7 @@ export const ResultPDF = forwardRef<HTMLDivElement, any>(({data}, ref) => {
           <p>Malang, {formDate} </p>
           <p>Konselor</p>
 
-          <p className="pt-10">Konselor</p>
+          <p className="pt-10 font-bold underline">Konselor</p>
           <p>NIP. </p>
         </div>
       </div>
