@@ -5,9 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-  font-family: 'Plus Jakarta Sans';
-} */
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

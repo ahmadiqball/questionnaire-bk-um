@@ -19,7 +19,7 @@ export function PageLayout() {
     if (isCounselorPage && !isCounselor) {
       navigate('/');
     } else if (isAssessmentPage && !userData) {
-      // navigate('/assessment/start');
+      navigate('/assessment/start');
     }
 
   }, [])
